@@ -1,22 +1,83 @@
 {
-  "name": "gallery",
+  "name": "gallero",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "expo-router/entry",
   "dependencies": {
+    "@expo/vector-icons": "^15.0.2",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@shopify/flash-list": "2.3.2",
     "expo": "~58.0.14",
+    "expo-asset": "~58.0.16",
+    "expo-blur": "~58.0.4",
+    "expo-build-properties": "~58.0.11",
+    "expo-clipboard": "~58.0.3",
+    "expo-constants": "~58.0.12",
+    "expo-device": "~58.0.5",
+    "expo-file-system": "~58.0.9",
+    "expo-font": "~58.0.8",
+    "expo-haptics": "~58.0.7",
+    "expo-image": "~58.0.15",
+    "expo-image-manipulator": "~58.0.14",
+    "expo-linear-gradient": "~58.0.3",
+    "expo-linking": "~58.0.13",
+    "expo-local-authentication": "~58.0.2",
+    "expo-media-library": "~58.0.10",
+    "expo-navigation-bar": "~58.0.4",
+    "expo-router": "~58.0.23",
+    "expo-sharing": "~58.0.19",
+    "expo-splash-screen": "~58.0.10",
     "expo-status-bar": "~58.0.3",
+    "expo-system-ui": "~58.0.6",
+    "expo-video": "~58.0.11",
+    "jpeg-js": "^0.4.4",
     "react": "19.3.0",
-    "react-native": "0.88.0"
+    "react-dom": "19.3.0",
+    "react-native": "0.88.0",
+    "react-native-fast-tflite": "^3.0.1",
+    "react-native-gesture-handler": "~3.3.0",
+    "react-native-nitro-modules": "^0.37.1",
+    "react-native-reanimated": "4.7.1",
+    "react-native-safe-area-context": "~5.10.1",
+    "react-native-screens": "~4.30.0",
+    "react-native-svg": "15.16.0",
+    "react-native-worklets": "0.13.0"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/react": "~19.3.0",
+    "jest": "^30.5.2",
+    "jest-expo": "^58.0.11",
+    "sharp": "^0.35.5",
     "typescript": "~6.0.3"
   },
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "build:apk": "cd android && gradlew assembleRelease",
+    "icons": "node scripts/generate-icons.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "test:ci": "jest --ci --verbose",
+    "art": "node scripts/generate-readme-art.mjs"
   },
-  "private": true
+  "private": true,
+  "reanimated": {
+    "staticFeatureFlags": {
+      "ANDROID_SYNCHRONOUSLY_UPDATE_UI_PROPS": true,
+      "IOS_SYNCHRONOUSLY_UPDATE_UI_PROPS": true
+    }
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "testMatch": [
+      "**/__tests__/**/*.test.ts?(x)"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/android",
+      "<rootDir>/dist"
+    ]
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "description": "Gallero — a minimal, private, fully customizable photo gallery for Android"
 }

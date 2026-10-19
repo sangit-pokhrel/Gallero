@@ -1,0 +1,8 @@
+{
+  "name": "gallero-faces",
+  "version": "1.0.0",
+  "description": "On-device face detection for Gallero (Google ML Kit)",
+  "main": "index.ts",
+  "private": true,
+  "license": "MIT"
+}

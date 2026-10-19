@@ -1,17 +1,21 @@
 {
   "expo": {
-    "name": "gallery",
-    "slug": "gallery",
+    "name": "Gallero",
+    "slug": "gallero",
+    "scheme": "gallero",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#0F0F12",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.artova.gallero"
     },
     "android": {
+      "package": "com.artova.gallero",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#141417",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -20,6 +24,63 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-image",
+      "expo-sharing",
+      "expo-video",
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Gallero needs access to your photos to show your gallery.",
+          "savePhotosPermission": "Gallero needs access to manage your photos.",
+          "granularPermissions": [
+            "photo",
+            "video"
+          ],
+          "isAccessMediaLocationEnabled": true
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 140,
+          "resizeMode": "contain",
+          "backgroundColor": "#F7F5F0",
+          "dark": {
+            "image": "./assets/splash-icon.png",
+            "backgroundColor": "#0F0F12"
+          }
+        }
+      ],
+      "expo-font",
+      "react-native-fast-tflite",
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Gallero uses Face ID to unlock your Hidden and Recently Deleted albums."
+        }
+      ],
+      "expo-asset",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enableMinifyInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true,
+            "useLegacyPackaging": true,
+            "buildArchs": [
+              "arm64-v8a"
+            ],
+            "extraProguardRules": "# Native bridges looked up by name from C++ / JNI\n-keep class com.margelo.nitro.** { *; }\n-keep class org.tensorflow.lite.** { *; }\n-keep class expo.modules.gallerofaces.** { *; }\n# ML Kit discovers its components by reflection\n-keep class com.google.mlkit.** { *; }\n-keep class * implements com.google.firebase.components.ComponentRegistrar { <init>(); }\n-keep class com.google.android.gms.internal.mlkit_vision_face** { *; }\n-dontwarn org.tensorflow.lite.gpu.**"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": false
     }
   }
 }

@@ -1,0 +1,20 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'expo.modules.gallerofaces'
+version = '1.0.0'
+
+android {
+  namespace "expo.modules.gallerofaces"
+  defaultConfig {
+    versionCode 1
+    versionName "1.0.0"
+  }
+}
+
+dependencies {
+  // Unbundled: the detector ships with Google Play services instead of inside the APK (~12 MB smaller).
+  implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.1.0'
+}
